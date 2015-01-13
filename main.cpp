@@ -4,6 +4,8 @@
 #include <GL/glu.h>
 #include <GL/gl.h>
 
+void drawTriangle();
+
 int main()
 {
     if(SDL_Init(SDL_INIT_VIDEO))
@@ -44,10 +46,22 @@ int main()
     glMatrixMode(GL_MODELVIEW);
     gluLookAt(2, 2, 2, 0, 0, 0, 0, 1, 0);
 
-
+    drawTriangle();
     SDL_GL_SwapWindow(window);
-    SDL_Delay(1000);
+    SDL_Delay(5000);
 
+}
 
-
+void drawTriangle()
+{
+    glPushMatrix();
+        glBegin(GL_TRIANGLES);
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glVertex3f(0.0f, 1.0f, 0.0f);
+            glColor3f(0.0f, 1.0f, 0.0f);
+            glVertex3f(1.0f, -1.0f, 0.0f);
+            glColor3f(0.0f, 0.0f, 1.0f);
+            glVertex3f(0.0f, 0.0f, 1.0f);
+        glEnd();
+    glPopMatrix();
 }
